@@ -212,18 +212,44 @@ let productPremium = document.querySelector(
 let productNew = document.querySelector("section#new_product #new_products");
 let productSearch = document.querySelector("#Search_products");
 let productBest = document.querySelector("section#best_seller #best_products");
-product.forEach((product)=>{
-  
-  let price = product.price;
-  console.log(price);
-  if (price > 60 && price < 700) {
-    productNew.innerHTML += templete;
-  }
-  if (price < 11) {
-    productBest.innerHTML += templete;
-  }
-  if (price > 113) {
-    productPremium.innerHTML += templete;
-  }
-})
+
+
+  product.forEach((product) => {
+    let templete = ` <div class="card">
+        <img class="box_img" src="${product.image}" />
+        <h4 class="name">
+              ${product.title}
+              </h4>
+        <div class="hover">
+
+          <div class="rasul">
+            <h2 class="rating">
+              <span class="star"><i class="fa-solid fa-star"></i></span>
+              <span class="rate">${product.rating.rate}</span>/<span class="count">${product.rating.count}</span>
+            </h2>
+          </div>
+          <div class="price">
+              <h3 class="prices">
+              $${product.price}
+              </h3>
+          </div>
+
+        </div>
+      </div>`;
+      let price = product.price;
+      if (price > 60 && price < 700) {
+        productNew.innerHTML += templete;
+      }
+      if (price < 11) {
+        productBest.innerHTML += templete;
+      }
+      if (price > 113) {
+        productPremium.innerHTML += templete;
+      }
+
+   
+  });
+
+ 
+
 
